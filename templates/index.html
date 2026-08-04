@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Spam Email Detector</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background: linear-gradient(135deg,#667eea,#764ba2);
+}
+
+.container{
+width:450px;
+padding:40px;
+background: rgba(255,255,255,0.15);
+border-radius:15px;
+backdrop-filter: blur(10px);
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+text-align:center;
+color:white;
+}
+
+h1{
+font-size:28px;
+margin-bottom:5px;
+}
+
+.subheading{
+font-size:14px;
+opacity:0.8;
+margin-bottom:25px;
+}
+
+textarea{
+width:100%;
+height:120px;
+border:none;
+border-radius:8px;
+padding:12px;
+resize:none;
+font-size:15px;
+margin-bottom:15px;
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:#ffffff;
+color:#667eea;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.03);
+background:#f2f2f2;
+}
+
+.result{
+margin-top:20px;
+font-size:18px;
+font-weight:bold;
+padding:10px;
+border-radius:8px;
+}
+
+.spam{
+background: rgba(255,0,0,0.2);
+color:#ff4d4d;
+}
+
+.notspam{
+background: rgba(0,255,0,0.2);
+color:#00ffcc;
+}
+
+.footer{
+margin-top:25px;
+font-size:13px;
+opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Email Spam Detector</h1>
+<div class="subheading">Made by Tanishq Buradkar</div>
+
+<form method="POST">
+<textarea name="message" placeholder="Type your email message here..."></textarea>
+<button type="submit">Check Message</button>
+</form>
+
+{% if prediction %}
+<div class="result {% if prediction == 'Spam' %}spam{% else %}notspam{% endif %}">
+{{ prediction }}
+</div>
+{% endif %}
+
+<div class="footer">
+Machine Learning Spam Detection System
+</div>
+
+</div>
+
+</body>
+</html>
